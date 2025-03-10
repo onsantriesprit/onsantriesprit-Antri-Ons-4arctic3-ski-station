@@ -1,9 +1,6 @@
 package tn.esprit.test.Controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.test.entities.Skier;
 import tn.esprit.test.services.SkierService;
 
@@ -17,6 +14,12 @@ public class SkierController {
     public Skier addSkier( @RequestBody Skier sckier){
 
         return skierService.addSkier(sckier);
+    }
+    @PostMapping("add-skier-course/{numCourse}")
+    public Skier addSkierAndAssignToCourse(
+            @RequestBody  Skier skier, @PathVariable(name = "numCourse") Long numCourse
+    ){
+        return skierService.addSkierAndAssignToCourse(skier, numCourse);
     }
 
 }

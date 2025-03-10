@@ -1,9 +1,6 @@
 package tn.esprit.test.Controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.test.entities.Piste;
 import tn.esprit.test.services.PisteServiceImp;
 
@@ -21,5 +18,14 @@ public class PisteRestController {
     @PostMapping("add")
     public Piste addPiste(@RequestBody Piste piste) {
         return pisteService.addPiste(piste);
+    }
+
+
+    @PatchMapping("assign-skier-to-piste")
+    public Piste assignSkierToPiste(
+            @RequestParam Long numSkier,
+            @RequestParam Long numPiste
+    ) {
+        return pisteService.assignSkierToPiste(numSkier, numPiste);
     }
 }

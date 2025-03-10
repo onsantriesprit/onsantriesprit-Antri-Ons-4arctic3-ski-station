@@ -16,7 +16,6 @@ public class Instructor {
     private String firstName;
     private String lastName;
 
-    @OneToMany// Instructor is the parent side, and "instructor" is the field in Course
-    private Set<Course> courses;
-
+    @ManyToMany
+    Set<Course> courses;
 }

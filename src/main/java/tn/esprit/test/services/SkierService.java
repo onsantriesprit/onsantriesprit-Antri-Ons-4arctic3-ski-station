@@ -22,9 +22,10 @@ import java.util.Optional;
 @AllArgsConstructor
 
 @Service
-public class SkierService  implements ISkierService{
+public class SkierService  implements ISkierService {
 
-    @Autowired //le cablage automatique entre service et repository dans ce cas ( coublage entre interface est faible alors que entre les classes est fort)<<
+    @Autowired
+    //le cablage automatique entre service et repository dans ce cas ( coublage entre interface est faible alors que entre les classes est fort)<<
     private ISkierRepository skierRepository;
 
     // Ajouter un skieur
@@ -57,14 +58,9 @@ public class SkierService  implements ISkierService{
         return skierRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
-  @override
-public Piste assignToSkier(Long numPiste , Long numSkier) {
-      PisteRepository  piste = Piste.findById(numPiste).orElse(other null);
-      Skier skier = skierRepository.findById(numSkier).orElse(other null);
-      piste.getSkiers().add(skier);
-      return PisteRepository.save(piste);
+
   }
-}
+
 
 
 
